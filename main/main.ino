@@ -52,7 +52,7 @@ void surveillance() {
   int pir4 = digitalRead(pir1Pin);
 
   if (pir1 || pir2 || pir3 || pir4) {
-    Serial.println("Detected Fox");
+    frightenFox();
   }
 }
 
