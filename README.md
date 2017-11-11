@@ -1,6 +1,4 @@
-Ultimate Fox Deterrent
-
-=============
+# Ultimate Fox Deterrent
 
 > Flashes LEDs and makes noise when a fox is near
 
