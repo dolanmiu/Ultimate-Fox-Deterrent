@@ -12,6 +12,7 @@ int pir1Pin = 7; // Input for HC-S501
 int pir2Pin = 8; // Input for HC-S501
 int pir3Pin = 9; // Input for HC-S501
 int pir4Pin = 10; // Input for HC-S501
+int scarePin = 11; // Output for scare
 
 void setup() {
   Serial.begin(9600);
@@ -25,6 +26,7 @@ void setup() {
   pinMode(pir2Pin, INPUT);
   pinMode(pir3Pin, INPUT);
   pinMode(pir4Pin, INPUT);
+  pinMode(scarePin, OUTPUT);
 
   Alarm.alarmRepeat(0, 0, 0, setSunset);
   Serial.flush();
@@ -58,6 +60,11 @@ void surveillance() {
 
 void frightenFox() {  
   Serial.println("Emitting LED and making noise");
+  for (int i=0; i <= 20; i++){
+    digitalWrite(scarePin, HIGH);
+    delay(100);
+    digitalWrite(scarePin, LOW);
+  }
 }
 
 void syncTime() {
