@@ -22,7 +22,10 @@ void setup() {
   setSunset();
 
   pinMode(pir1Pin, INPUT);
-  
+  pinMode(pir2Pin, INPUT);
+  pinMode(pir3Pin, INPUT);
+  pinMode(pir4Pin, INPUT);
+
   Alarm.alarmRepeat(0, 0, 0, setSunset);
   Serial.flush();
 }
@@ -43,8 +46,14 @@ void loop() {
 
 void surveillance() {
   Serial.println("Surveillancing");
-  int pirValue = digitalRead(pir1Pin);
-  Serial.println(pirValue);
+  int pir1 = digitalRead(pir1Pin);
+  int pir2 = digitalRead(pir1Pin);
+  int pir3 = digitalRead(pir1Pin);
+  int pir4 = digitalRead(pir1Pin);
+
+  if (pir1 || pir2 || pir3 || pir4) {
+    Serial.println("Detected Fox");
+  }
 }
 
 void frightenFox() {  
