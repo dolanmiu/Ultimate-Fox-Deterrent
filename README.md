@@ -1,15 +1,15 @@
-Automated Chicken Coop
+Ultimate Fox Deterrent
+
 =============
-> A Chicken Coop Automator which will right now open and close a door depending on the time of day.
-Will soon have the ability to deter foxes with a motion detected water defence system.
+
+> Flashes LEDs and makes noise when a fox is near
 
 ## Parts list
 
 - Arduino Uno
-- EasyDriver 4.4
-- Relay Switch
-- CNC Stepper Motor
-- 12V Lead Acid Battery (for the demanding motor)
-- Logarithmic light sensor
-- Rack and pinnon (to be connected to the motor to open/close door)
-- Solar Panel and battery (for the Arduino)
+- DS3231 for time keeping
+- HC-SR501 for motion sensing x4
+- 5V 5050 LED strip
+- Solar panel
+- Battery
+- USB / DC / Solar Lithium Ion/Polymer charger - v2 - [here](https://www.adafruit.com/product/390)
