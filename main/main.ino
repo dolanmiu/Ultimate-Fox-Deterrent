@@ -36,19 +36,19 @@ void setup() {
 void loop() {
   Serial.flush();
   digitalClockDisplay();
-  Alarm.delay(1000); // wait one second between clock display
+  Alarm.delay(100); // wait one millisecond between clock display
 
   if (hour() > sunset || hour() < 7) {
     surveillance();
-    // LowPower.powerDown(SLEEP_4S, ADC_OFF, BOD_OFF);
+    LowPower.powerDown(SLEEP_2S, ADC_OFF, BOD_OFF);
+    syncTime();
   } else {
     LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
+    syncTime();
   }
-  syncTime();
 }
 
 void surveillance() {
-  Serial.println("Surveillancing");
   int pir1 = digitalRead(pir1Pin);
   int pir2 = digitalRead(pir1Pin);
   int pir3 = digitalRead(pir1Pin);
