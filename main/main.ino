@@ -12,7 +12,7 @@ int pir1Pin = 7; // Input for HC-S501
 int pir2Pin = 8; // Input for HC-S501
 int pir3Pin = 9; // Input for HC-S501
 int pir4Pin = 10; // Input for HC-S501
-int scarePin = 11; // Output for scare
+int scarePin = 13; // Output for scare
 
 void setup() {
   Serial.begin(9600);
@@ -27,7 +27,8 @@ void setup() {
   pinMode(pir3Pin, INPUT);
   pinMode(pir4Pin, INPUT);
   pinMode(scarePin, OUTPUT);
-
+  digitalWrite(scarePin, LOW);
+  
   Alarm.alarmRepeat(0, 0, 0, setSunset);
   Serial.flush();
 }
