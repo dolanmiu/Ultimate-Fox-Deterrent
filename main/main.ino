@@ -63,7 +63,7 @@ void frightenFox() {
   Serial.println("Emitting LED and making noise");
   for (int i=0; i <= 20; i++){
     digitalWrite(scarePin, HIGH);
-    delay(100);
+    delay(200);
     digitalWrite(scarePin, LOW);
   }
 }
