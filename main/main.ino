@@ -54,6 +54,8 @@ void surveillance() {
   int pir3 = digitalRead(pir1Pin);
   int pir4 = digitalRead(pir1Pin);
 
+  System.println(pir1 + " " + pir2 + " " + pir3 + " " + pir4);
+
   if (pir1 || pir2 || pir3 || pir4) {
     frightenFox();
   }
