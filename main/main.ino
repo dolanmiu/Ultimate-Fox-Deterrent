@@ -9,9 +9,9 @@ RTC_DS1307 rtc;
 int sunset; 
 
 int pir1Pin = 7; // Input for HC-S501
-int pir2Pin = 8; // Input for HC-S501
-int pir3Pin = 9; // Input for HC-S501
-int pir4Pin = 10; // Input for HC-S501
+int pir2Pin = 6; // Input for HC-S501
+int pir3Pin = 5; // Input for HC-S501
+int pir4Pin = 4; // Input for HC-S501
 int scarePin = 13; // Output for scare
 
 void setup() {
@@ -36,6 +36,7 @@ void setup() {
 void loop() {
   Serial.flush();
   digitalClockDisplay();
+  
   Alarm.delay(100); // wait one millisecond between clock display
 
   if (hour() > sunset || hour() < 7) {
@@ -50,11 +51,9 @@ void loop() {
 
 void surveillance() {
   int pir1 = digitalRead(pir1Pin);
-  int pir2 = digitalRead(pir1Pin);
-  int pir3 = digitalRead(pir1Pin);
-  int pir4 = digitalRead(pir1Pin);
-
-  System.println(pir1 + " " + pir2 + " " + pir3 + " " + pir4);
+  int pir2 = digitalRead(pir2Pin);
+  int pir3 = digitalRead(pir3Pin);
+  int pir4 = digitalRead(pir4Pin);
 
   if (pir1 || pir2 || pir3 || pir4) {
     frightenFox();
