@@ -40,8 +40,12 @@ void loop() {
   Alarm.delay(100); // wait one millisecond between clock display
 
   if (hour() > sunset || hour() < 7) {
-    surveillance();
-    LowPower.powerDown(SLEEP_2S, ADC_OFF, BOD_OFF);
+    bool foundFox = surveillance();
+    if (foundFox) {
+      LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
+    } else {
+      LowPower.powerDown(SLEEP_2S, ADC_OFF, BOD_OFF);
+    }
     syncTime();
   } else {
     LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
@@ -49,20 +53,29 @@ void loop() {
   }
 }
 
-void surveillance() {
+bool surveillance() {
   int pir1 = digitalRead(pir1Pin);
   int pir2 = digitalRead(pir2Pin);
   int pir3 = digitalRead(pir3Pin);
   int pir4 = digitalRead(pir4Pin);
 
-  if (pir1 || pir2 || pir3 || pir4) {
+  Serial.println(String(pir1) + " " + String(pir2) + " " + String(pir3) + " " + String(pir4));
+  Serial.print(pir1);
+  Serial.print(pir2);
+  Serial.print(pir3);
+  Serial.print(pir4);
+  Serial.println();
+  
+  if (pir1 + pir2 + pir3 + pir4 >= 2) {
     frightenFox();
+    return true;
   }
+  return false;
 }
 
 void frightenFox() {  
   Serial.println("Emitting LED and making noise");
-  for (int i=0; i <= 20; i++){
+  for (int i=0; i <= 5; i++){
     digitalWrite(scarePin, HIGH);
     delay(100);
     digitalWrite(scarePin, LOW);
