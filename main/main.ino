@@ -4,6 +4,7 @@
 #include "RTClib.h"
 #include "LowPower.h"
 #include <Dusk2Dawn.h>
+#include <HCSR04.h>
 
 RTC_DS1307 rtc;
 int sunset; 
@@ -12,7 +13,7 @@ int pir1Pin = 7; // Input for HC-S501
 int pir2Pin = 6; // Input for HC-S501
 int pir3Pin = 5; // Input for HC-S501
 int pir4Pin = 4; // Input for HC-S501
-int scarePin = 13; // Output for scare
+int scarePin = 12; // Output for scare
 
 void setup() {
   Serial.begin(9600);
