@@ -39,7 +39,7 @@ void loop() {
   
   Alarm.delay(100); // wait one millisecond between clock display
 
-  if (hour() > sunset || hour() < 7) {
+  if (hour() >= sunset || hour() < 7) {
     bool foundFox = surveillance();
     if (foundFox) {
       LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
